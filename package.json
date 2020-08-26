@@ -1,0 +1,39 @@
+{
+  "name": "publish-wechat-miniprogram",
+  "version": "0.1.0",
+  "description": "Publish your WeChat miniprogram in Github Actions",
+  "main": "dist",
+  "scripts": {
+    "build": "tsc",
+    "test": "eslint src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takashiro/publish-wechat-miniprogram.git"
+  },
+  "keywords": [
+    "wechat",
+    "weixin",
+    "miniprogram",
+    "publish"
+  ],
+  "author": "Kazuichi Takashiro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/takashiro/publish-wechat-miniprogram/issues"
+  },
+  "homepage": "https://github.com/takashiro/publish-wechat-miniprogram#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "miniprogram-ci": "^1.0.72"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.54",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "typescript": "^4.0.2"
+  }
+}
