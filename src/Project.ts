@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as path from 'path';
 import * as core from '@actions/core';
 import { Project as IProject } from 'miniprogram-ci';
 
@@ -8,7 +9,8 @@ export default class Project extends IProject {
 	protected npmEnabled: boolean;
 
 	constructor() {
-		const content = fs.readFileSync('project.config.json', 'utf-8');
+		const projectPath = core.getInput('project-path') || process.env['GITHUB_WORKSPACE'] || '.';
+		const content = fs.readFileSync(path.join(projectPath, 'project.config.json'), 'utf-8');
 		const config = JSON.parse(content);
 
 		const { appid } = config;
@@ -44,8 +46,9 @@ export default class Project extends IProject {
 			ignores,
 		});
 
-		if (fs.existsSync('package.json')) {
-			const pkgContent = fs.readFileSync('package.json', 'utf-8');
+		const pkgFile = path.join(projectPath, 'package.json');
+		if (fs.existsSync(pkgFile)) {
+			const pkgContent = fs.readFileSync(pkgFile, 'utf-8');
 			const pkg = JSON.parse(pkgContent);
 			this.version = pkg.version;
 			this.npmEnabled = true;

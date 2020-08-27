@@ -1,11 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
+const path = require("path");
 const core = require("@actions/core");
 const miniprogram_ci_1 = require("miniprogram-ci");
 class Project extends miniprogram_ci_1.Project {
     constructor() {
-        const content = fs.readFileSync('project.config.json', 'utf-8');
+        const projectPath = core.getInput('project-path') || process.env['GITHUB_WORKSPACE'] || '.';
+        const content = fs.readFileSync(path.join(projectPath, 'project.config.json'), 'utf-8');
         const config = JSON.parse(content);
         const { appid } = config;
         const ignores = [];
@@ -37,8 +39,9 @@ class Project extends miniprogram_ci_1.Project {
             type: 'miniProgram',
             ignores,
         });
-        if (fs.existsSync('package.json')) {
-            const pkgContent = fs.readFileSync('package.json', 'utf-8');
+        const pkgFile = path.join(projectPath, 'package.json');
+        if (fs.existsSync(pkgFile)) {
+            const pkgContent = fs.readFileSync(pkgFile, 'utf-8');
             const pkg = JSON.parse(pkgContent);
             this.version = pkg.version;
             this.npmEnabled = true;
