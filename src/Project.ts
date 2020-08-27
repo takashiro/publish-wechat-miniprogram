@@ -39,6 +39,7 @@ export default class Project extends IProject {
 		super({
 			appid,
 			projectPath: '.',
+			privateKeyPath: '/fake/key/path',
 			type: 'miniProgram',
 			ignores,
 		});
