@@ -11,5 +11,10 @@ inputs:
       Release version.
       If it is empty and package.json exists, the version in package.json will be used.
 runs:
-  using: node12
-  main: dist/index.js
+  using: 'composite'
+  steps:
+    - run: npm i @actions/core miniprogram-ci
+      shell: bash
+      working-directory: ${{github.action_path}}
+    - run: node ${{github.action_path}}/dist
+      shell: bash
