@@ -41,7 +41,7 @@ export default class Project extends IProject {
 		super({
 			appid,
 			projectPath: '.',
-			privateKeyPath: '/fake/key/path',
+			privateKeyPath: 'tsconfig.json', // Fake key path
 			type: 'miniProgram',
 			ignores,
 		});
