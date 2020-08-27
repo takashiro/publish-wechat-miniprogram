@@ -33,6 +33,7 @@ class Project extends miniprogram_ci_1.Project {
         super({
             appid,
             projectPath: '.',
+            privateKeyPath: '/fake/key/path',
             type: 'miniProgram',
             ignores,
         });
