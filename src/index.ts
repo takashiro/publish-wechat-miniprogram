@@ -3,6 +3,7 @@ import * as core from '@actions/core';
 import * as mp from 'miniprogram-ci';
 
 import Project from './Project';
+import { stat } from 'fs';
 
 (async function main(): Promise<void> {
 	try {
@@ -14,16 +15,24 @@ import Project from './Project';
 		}
 
 		if (project.isNpmEnabled()) {
+			console.log('Packing npm modules...');
 			const warnings = await mp.packNpm(project);
 			if (warnings.length > 0) {
 				console.warn(warnings);
 			}
 		}
 
+		console.log('Uploading...');
 		await mp.upload({
 			project,
 			version,
-			onProgressUpdate: console.log,
+			onProgressUpdate(progress) {
+				if (typeof progress === 'string') {
+					console.log(`--- ${progress} ---`);
+				} else if (progress.status === 'doing') {
+					console.log(`Processing ${progress.message}`);
+				}
+			},
 		});
 	} catch (error) {
 		core.setFailed(error);

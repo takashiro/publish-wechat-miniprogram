@@ -35,7 +35,7 @@ class Project extends miniprogram_ci_1.Project {
         super({
             appid,
             projectPath: '.',
-            privateKeyPath: 'tsconfig.json',
+            privateKeyPath: path.join(__dirname, '..', 'package.json'),
             type: 'miniProgram',
             ignores,
         });

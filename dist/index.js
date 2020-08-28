@@ -13,15 +13,24 @@ const Project_1 = require("./Project");
             return;
         }
         if (project.isNpmEnabled()) {
+            console.log('Packing npm modules...');
             const warnings = await mp.packNpm(project);
             if (warnings.length > 0) {
                 console.warn(warnings);
             }
         }
+        console.log('Uploading...');
         await mp.upload({
             project,
             version,
-            onProgressUpdate: console.log,
+            onProgressUpdate(progress) {
+                if (typeof progress === 'string') {
+                    console.log(`--- ${progress} ---`);
+                }
+                else if (progress.status === 'doing') {
+                    console.log(`Processing ${progress.message}`);
+                }
+            },
         });
     }
     catch (error) {

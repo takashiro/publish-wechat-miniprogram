@@ -18,6 +18,5 @@ runs:
     - run: npm i --production
       shell: bash
       working-directory: ${{ github.action_path }}
-    - run: node dist
+    - run: node ${{ github.action_path }}/dist
       shell: bash
-      working-directory: ${{ github.action_path }}
