@@ -31,6 +31,7 @@ import Project from './Project';
 		await mp.upload({
 			project,
 			version,
+			desc: process.env.GITHUB_SHA,
 			onProgressUpdate(progress) {
 				if (typeof progress === 'string') {
 					console.log(`--- ${progress} ---`);
