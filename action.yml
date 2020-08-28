@@ -3,11 +3,6 @@ description: 'Publish a WeChat miniprogram'
 inputs:
   project-path:
     description: The root directory of WeChat miniprogram.
-  ssh-key:
-    description: >
-      SSH key used to upload the miniprogram.
-      Please download it from WeChat Public Platform (https://mp.weixin.qq.com) and configure it as a secret.
-    required: true
   version:
     description: >
       Release version.

@@ -67,6 +67,6 @@ export default class Project extends IProject {
 
 	// eslint-disable-next-line class-methods-use-this
 	get privateKey(): string {
-		return core.getInput('ssh-key');
+		return process.env.WECHAT_UPLOAD_KEY || '';
 	}
 }
