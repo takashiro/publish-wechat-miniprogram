@@ -15,7 +15,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: npm i --production
+    - run: npm i
+      shell: bash
+      working-directory: ${{ github.action_path }}
+    - run: npm run build
       shell: bash
       working-directory: ${{ github.action_path }}
     - run: node ${{ github.action_path }}/dist
