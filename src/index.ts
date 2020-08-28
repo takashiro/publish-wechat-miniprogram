@@ -3,7 +3,6 @@ import * as core from '@actions/core';
 import * as mp from 'miniprogram-ci';
 
 import Project from './Project';
-import { stat } from 'fs';
 
 (async function main(): Promise<void> {
 	try {
@@ -11,6 +10,12 @@ import { stat } from 'fs';
 		const version = project.getVersion();
 		if (!version) {
 			core.setFailed('Please define a version.');
+			return;
+		}
+
+		const { privateKey } = project;
+		if (!privateKey) {
+			core.setFailed('Please define ssh-key.');
 			return;
 		}
 

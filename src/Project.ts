@@ -9,7 +9,7 @@ export default class Project extends IProject {
 	protected npmEnabled: boolean;
 
 	constructor() {
-		const projectPath = core.getInput('project-path') || process.env['GITHUB_WORKSPACE'] || '.';
+		const projectPath = core.getInput('project-path') || '.';
 		const content = fs.readFileSync(path.join(projectPath, 'project.config.json'), 'utf-8');
 		const config = JSON.parse(content);
 
