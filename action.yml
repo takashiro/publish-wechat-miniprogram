@@ -1,5 +1,7 @@
 name: Publish WeChat Miniprogram
 description: Publish your WeChat miniprogram to Wechat Platform
+icon: upload
+color: green
 inputs:
   upload-key:
     description: A private key used to authenticate and upload your miniprogram project.
