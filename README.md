@@ -15,6 +15,7 @@ This action builds your miniprogram project and upload it.
     # Private key used to upload your miniprogram.
     # This must be generated from WeChat Platform with your administrator account.
     upload-key: ''
+```
 <!-- end usage -->
 
 # License
