@@ -1,6 +1,6 @@
 {
   "name": "publish-wechat-miniprogram",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Publish your WeChat miniprogram in Github Actions",
   "main": "dist",
   "scripts": {
