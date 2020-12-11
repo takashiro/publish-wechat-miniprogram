@@ -7,14 +7,14 @@ This action builds your miniprogram project and upload it.
 <!-- start usage -->
 ```yaml
 - uses: takashiro/publish-wechat-miniprogram@v1
-	with:
-		# The root directory of miniprogram project, where project.config.json exists.
-		# Default: '.'
-		project-path: '.'
+  with:
+    # The root directory of miniprogram project, where project.config.json exists.
+    # Default: '.'
+    project-path: '.'
 
-		# Private key used to upload your miniprogram.
-		# This must be generated from WeChat Platform with your administrator account.
-		upload-key: ''
+    # Private key used to upload your miniprogram.
+    # This must be generated from WeChat Platform with your administrator account.
+    upload-key: ''
 <!-- end usage -->
 
 # License
