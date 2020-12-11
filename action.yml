@@ -1,8 +1,12 @@
 name: Publish WeChat Miniprogram
 description: Publish your WeChat miniprogram to Wechat Platform
 inputs:
+  upload-key:
+    description: A private key used to authenticate and upload your miniprogram project.
   project-path:
-    description: The root directory of WeChat miniprogram.
+    description: >
+      The root directory of WeChat miniprogram.
+      Default: '.'
   version:
     description: >
       Release version.
