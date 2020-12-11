@@ -1,5 +1,5 @@
-name: 'Publish'
-description: 'Publish a WeChat miniprogram'
+name: Publish WeChat Miniprogram
+description: Publish your WeChat miniprogram to Wechat Platform
 inputs:
   project-path:
     description: The root directory of WeChat miniprogram.
@@ -8,7 +8,7 @@ inputs:
       Release version.
       If it is empty and package.json exists, the version in package.json will be used.
 runs:
-  using: 'composite'
+  using: composite
   steps:
     - run: npm i
       shell: bash
