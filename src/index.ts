@@ -5,6 +5,8 @@ import * as mp from 'miniprogram-ci';
 import Project from './Project';
 
 (async function main(): Promise<void> {
+	core.setSecret('upload-key');
+
 	try {
 		const project = new Project();
 		const version = project.getVersion();
@@ -15,7 +17,7 @@ import Project from './Project';
 
 		const { privateKey } = project;
 		if (!privateKey) {
-			core.setFailed('Please define ssh-key.');
+			core.setFailed('Please define upload key.');
 			return;
 		}
 

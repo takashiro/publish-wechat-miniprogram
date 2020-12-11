@@ -1,8 +1,11 @@
 name: Publish WeChat Miniprogram
+
 description: Publish your WeChat miniprogram to Wechat Platform
+
 branding:
   icon: upload
   color: green
+
 inputs:
   upload-key:
     description: A private key used to authenticate and upload your miniprogram project.
@@ -14,14 +17,8 @@ inputs:
     description: >
       Release version.
       If it is empty and package.json exists, the version in package.json will be used.
+
 runs:
-  using: composite
-  steps:
-    - run: npm i
-      shell: bash
-      working-directory: ${{ github.action_path }}
-    - run: npm run build
-      shell: bash
-      working-directory: ${{ github.action_path }}
-    - run: node ${{ github.action_path }}/dist
-      shell: bash
+  using: node12
+  pre: build.js
+  main: dist/index.js
